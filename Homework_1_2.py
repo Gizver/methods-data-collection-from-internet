@@ -10,7 +10,7 @@ def lastfm_get(payload):
     headers = {'USER-AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.135 YaBrowser/21.6.2.855 Yowser/2.5 Safari/537.36'}
     url = 'https://ws.audioscrobbler.com/2.0/'
 
-    payload['api_key'] = 'a0460860e28c2efaa078e8a8f6182801'
+    payload['api_key'] = '***'
     payload['format'] = 'json'
 
     response = requests.get(url, headers=headers, params=payload)
