@@ -33,10 +33,10 @@ next_page_blok = soup.find('div', {'data-qa': 'pager-block'}) #находим б
 
 #подтверждаем его существование
 if next_page_blok:
-    last_page_number = int(next_page_blok.find_all('a', {'class':'bloko-button', 'data-qa': 'pager-page'})[-1].getText()) - 1   #находим последнюю возможную страницу
-                                                                                                                                # и так как на HH нумерация с 0, то отнимаем 1
+    last_page_number = int(next_page_blok.find_all('a', {'class':'bloko-button', 'data-qa': 'pager-page'})[-1].getText())  #находим последнюю возможную страницу
+
 else:
-    last_page_number = 1
+    last_page_number = 1 # если такого блока нет, то страница всего одна
 data = []
 #перебираем страницы и собираем их код
 for page in range(0, last_page_number):
@@ -103,7 +103,7 @@ for page in range(0, last_page_number):
         })
 
 pprint(data)
-print(f'С {last_page_number + 1} страниц было собрано {len(data)} вакансий')
+print(f'С {last_page_number} страниц было собрано {len(data)} вакансий')
 
 with open('hh_vacansy.json', 'w', encoding='UTF-8') as outfile:
     json.dump(data, outfile, ensure_ascii=False, separators=(',', ': '))
