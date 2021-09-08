@@ -7,17 +7,19 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'goodsparcer'
+BOT_NAME = 'homegoods'
+
 IMAGES_STORE = 'images'
 
-SPIDER_MODULES = ['goodsparcer.spiders']
-NEWSPIDER_MODULE = 'goodsparcer.spiders'
+SPIDER_MODULES = ['homegoods.spiders']
+NEWSPIDER_MODULE = 'homegoods.spiders'
 
 LOG_ENABLED = True
 LOG_LEVEL = 'DEBUG'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'goodsparcer (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' \
+             '(KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -48,13 +50,13 @@ COOKIES_ENABLED = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'goodsparcer.middlewares.GoodsparcerSpiderMiddleware': 543,
+#    'homegoods.middlewares.HomegoodsSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'goodsparcer.middlewares.GoodsparcerDownloaderMiddleware': 543,
+#    'homegoods.middlewares.HomegoodsDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,8 +68,8 @@ COOKIES_ENABLED = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'goodsparcer.pipelines.GoodsparcerPipeline': 300,
-    'goods.pipelines.GoodsPhotosPipeline': 200,
+    'homegoods.pipelines.HomegoodsPipeline': 300,
+    'homegoods.pipelines.HomegoodsPhotosPipeline': 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
