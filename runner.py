@@ -1,8 +1,8 @@
 from scrapy.settings import Settings
 from scrapy.crawler import CrawlerProcess
 
-from goodsparcer import settings
-from goodsparcer.spiders.lmerlin import LmerlinSpider
+from homegoods import settings
+from homegoods.spiders.leroymerlin import LeroymerlinSpider
 
 if __name__ == '__main__':
     crawler_setting = Settings()
@@ -10,6 +10,6 @@ if __name__ == '__main__':
 
     process = CrawlerProcess(crawler_setting)
     query_str = input("Введите название категории товаров: ")
-    process.crawl(LmerlinSpider, query_str=query_str)
+    process.crawl(LeroymerlinSpider, query_str=query_str)
 
     process.start()
