@@ -1,10 +1,9 @@
-
 import scrapy
 from scrapy.http import HtmlResponse
-from ..items import GoodsItem
+from ..items import HomegoodsItem
 from scrapy.loader import ItemLoader
 
-class LmerlinSpider(scrapy.Spider):
+class LeroymerlinSpider(scrapy.Spider):
     name = 'leroymerlin'
     allowed_domains = ['leroymerlin.ru']
 
@@ -22,7 +21,7 @@ class LmerlinSpider(scrapy.Spider):
 
 
     def parse_goods(self, response: HtmlResponse):
-        loader = ItemLoader(item=GoodsItem(), response=response)
+        loader = ItemLoader(item=HomegoodsItem(), response=response)
         loader.add_xpath("name", "//h1/text()")
         loader.add_xpath("photos", "//img[@slot='thumbs']/@src")
         loader.add_xpath("description", "//section[@id='nav-description']//p/parent::div")
