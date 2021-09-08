@@ -5,18 +5,18 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
 import scrapy
+from itemadapter import ItemAdapter
 from pymongo import MongoClient
 from scrapy.pipelines.images import ImagesPipeline
 import os
 from urllib.parse import urlparse
 
 
-class GoodsPipeline:
+class HomegoodsPipeline:
     def __init__(self):
         client = MongoClient('localhost', 27017)
-        self.mongobase = client.goods
+        self.mongobase = client.homegoods
 
     def process_item(self, item, spider):
         collection = self.mongobase[spider.name]
@@ -24,7 +24,7 @@ class GoodsPipeline:
         return item
 
 
-class GoodsPhotosPipeline(ImagesPipeline):
+class HomegoodsPhotosPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         if item['photos']:
             for img_link in item['photos']:
@@ -35,7 +35,7 @@ class GoodsPhotosPipeline(ImagesPipeline):
 
     def item_completed(self, results, item, info):
         if results:
-            item['photos'] = [i[1] for i in results if i[0]]
+            item['photos'] = [_[1] for _ in results if _[0]]
         return item
 
     def file_path(self, request, response=None, info=None, *, item=None):
